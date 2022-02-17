@@ -12,12 +12,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-
+        <h1>Piedra, papel o tijera</h1>
         <%
             String email = getServletContext().getInitParameter("email");
-            out.println("<br>try:" + request.getAttribute("result"));
-            Object result = request.getAttribute("result");
-            String res = result.toString();
         %>
 
         <form method="post" action="play">
@@ -27,25 +24,59 @@
                 <option value="2">Tijera</option>
             </select> 
             <input type="submit">
-        </form>
+        </form><br>
 
-        <table>
+        <ul>
+            <li>0: Piedra</li>
+            <li>1: Papel</li>
+            <li>2: Tijeras</li>
+        </ul><br>
+        
+        <table border="1">
             <tr>
-                <td> </td>
-                <td>Jugador</td>
-                <td>Compu</td>
+                <th>        </th>
+                <th>Jugador </th>
+                <th>Compu   </th>
             </tr>
             
             <tr>
                 <td>Jugada</td>
-                <td> <%  %> </td>
+                <td> <% out.println(request.getParameter("jugada"));  %> </td>
+                <td> <% out.println(request.getAttribute("compu"));  %> </td>
             </tr>
             
             <tr>
-                <td>Ganador de partida</td>
-                <td> <% out.println(result); %> </td>
+                <td>Ganador de jugada</td>
+                <td> <% out.println(request.getAttribute("result")); %> </td>
             </tr>
+            
+            <tr>
+                <td>Jugadas ganadas</td>
+                <td><% out.println(request.getAttribute("jugadorP")); %></td>
+                <td><% out.println(request.getAttribute("compuP")); %></td>
+            </tr>
+            
+            <tr>
+                <td>Jugadas empatadas</td>
+                <td><% out.println(request.getAttribute("empates")); %></td>
+            </tr>
+            
+            <tr>
+                <td>Partidas ganadas</td>
+                <td><%  %></td>
+                <td><%  %></td>
+            </tr>
+            
+            <tr>
+                <td>Partidas empatadas</td>
+                <td><%  %></td>
+            </tr>
+            
         </table>
+            
+            <% 
+                out.println(request.getAttribute("msg"));
+            %>
 
     </body>
 </html>

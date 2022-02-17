@@ -72,10 +72,23 @@ public class play extends HttpServlet {
             throws ServletException, IOException {
         RequestDispatcher view = request.getRequestDispatcher("PiedraPapelTijera.jsp");
         int jugada = 1;
+        jugada = Integer.parseInt(request.getParameter("jugada"));
         Juego juego = new Juego(jugada);
         int seleccionServer = juego.getComp();
+        request.setAttribute("compu", seleccionServer);
+        request.setAttribute("jugada", jugada);
         String result = juego.getDecision(jugada, seleccionServer);
         request.setAttribute("result", result);
+        
+        int jugadorP = juego.getJPuntos();
+        int compuP = juego.getCPuntos();
+        int empates = juego.getEmpates();
+        request.setAttribute("jugadorP", jugadorP);
+        request.setAttribute("compuP", compuP);
+        request.setAttribute("empates", empates);
+        
+        String msg = juego.getResult();
+        request.setAttribute("msg", msg);
         view.forward(request, response);
     }
 
