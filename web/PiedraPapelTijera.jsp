@@ -52,24 +52,24 @@
             
             <tr>
                 <td>Jugadas ganadas</td>
-                <td><% out.println(request.getAttribute("jugadorP")); %></td>
-                <td><% out.println(request.getAttribute("compuP")); %></td>
+                <td><% out.println(request.getAttribute("jugadorPJ")); %></td>
+                <td><% out.println(request.getAttribute("compuPJ")); %></td>
             </tr>
             
             <tr>
                 <td>Jugadas empatadas</td>
-                <td><% out.println(request.getAttribute("empates")); %></td>
+                <td><% out.println(request.getAttribute("empatesJ")); %></td>
             </tr>
             
             <tr>
                 <td>Partidas ganadas</td>
-                <td><%  %></td>
-                <td><%  %></td>
+                <td><% out.println(request.getAttribute("jugadorPP")); %></td>
+                <td><% out.println(request.getAttribute("compuPP")); %></td>
             </tr>
             
             <tr>
                 <td>Partidas empatadas</td>
-                <td><%  %></td>
+                <td><% out.println(request.getAttribute("empatesP")); %></td>
             </tr>
             
         </table>

@@ -80,12 +80,19 @@ public class play extends HttpServlet {
         String result = juego.getDecision(jugada, seleccionServer);
         request.setAttribute("result", result);
         
-        int jugadorP = juego.getJPuntos();
-        int compuP = juego.getCPuntos();
-        int empates = juego.getEmpates();
-        request.setAttribute("jugadorP", jugadorP);
-        request.setAttribute("compuP", compuP);
-        request.setAttribute("empates", empates);
+        int jugadorPJ = juego.getJPuntos();
+        int compuPJ = juego.getCPuntos();
+        int empatesJ = juego.getEmpatesJ();
+        request.setAttribute("jugadorPJ", jugadorPJ);
+        request.setAttribute("compuPJ", compuPJ);
+        request.setAttribute("empatesJ", empatesJ);
+        
+        int jugadorPP = juego.getJPartidas();
+        int compuPP = juego.getCPartidas();
+        int empatesP = juego.getEmpatesP();
+        request.setAttribute("jugadorPP", jugadorPP);
+        request.setAttribute("compuPP", compuPP);
+        request.setAttribute("empatesP", empatesP);
         
         String msg = juego.getResult();
         request.setAttribute("msg", msg);

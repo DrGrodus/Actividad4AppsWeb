@@ -15,7 +15,11 @@ public class Juego {
     private static int computer;
     private static int user;
     private static int empates;
+    private static int jugadas;
     private static int partidas;
+    private static int partidasJ;
+    private static int partidasC;
+    private static int partidasE;
 
     public Juego(int userSlct) {
         computer = userSlct;
@@ -28,41 +32,41 @@ public class Juego {
     }
 
     public String getDecision(int choice1, int choice2) { // choice1 = jugador, choice 2 = compu
-        iniciarPartida();
+        iniciarJugada();
         if (choice1 == choice2) {
             empates++;
-            partidas++;
+            jugadas++;
             return "Empate";
         } else {
             switch (choice1) { // 0 piedra, 1 papel, 2 tijeras
                 case 0:
                     if (choice2 == 1) {
                         computer++;
-                        partidas++;
+                        jugadas++;
                         return "Compu";
                     } else {
                         user++;
-                        partidas++;
+                        jugadas++;
                         return "Jugador";
                     }
                 case 1:
                     if (choice2 == 2) {
                         computer++;
-                        partidas++;
+                        jugadas++;
                         return "Compu";
                     } else {
                         user++;
-                        partidas++;
+                        jugadas++;
                         return "Jugador";
                     }
                 case 2:
                     if (choice2 == 0) {
                         computer++;
-                        partidas++;
+                        jugadas++;
                         return "Compu";
                     } else {
                         user++;
-                        partidas++;
+                        jugadas++;
                         return "Jugador";
                     }
             }
@@ -71,27 +75,36 @@ public class Juego {
     }
 
     public int getJPuntos() {return user;}
+    public int getJPartidas(){return partidasJ;}
 
     public int getCPuntos() {return computer;}
-
-    public int getEmpates() {return empates;}
+    public int getCPartidas(){return partidasC;}
     
-    public void iniciarPartida(){
-        if(partidas == 5){
+    public int getEmpatesJ() {return empates;}
+    public int getEmpatesP() {return partidasE;}
+    
+    public void iniciarJugada(){
+        if(jugadas == 5){
             user = 0;
             computer = 0;
             empates = 0;
-            partidas = 0;
+            jugadas = 0;
         }
     }
 
     public String getResult() {
-        if (partidas == 5) {
+        if (jugadas == 5) {
             if (user > computer) {
+                partidas++;
+                partidasJ++;
                 return "User Wins" + "\n Fin de la partida";
             } else if (computer > user) {
+                partidas++;
+                partidasC++;
                 return "Computer wins" + "\n Fin de la partida";
             } else {
+                partidas++;
+                partidasE++;
                 return "It is a tie" + "\n Fin de la partida";
             }
         }
